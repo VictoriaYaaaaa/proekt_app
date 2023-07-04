@@ -22,3 +22,11 @@ h1 {
     font-weight: bold;
     font-family: Courier New;
 }
+
+.paragraf-0 {
+    font-size: 24px;
+    font-style: oblique;
+    text-align: center;
+    text-shadow: 2px 2px green;
+}
+
