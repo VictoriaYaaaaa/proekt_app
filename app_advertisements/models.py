@@ -20,7 +20,14 @@ class Advertisement(models.Model):
         if self.created_data.date()==timezone.now().date():
             created_time=self.created_data.time().strftime("%H:%M:%S")
             return format_html('<span style="color:orange;font-weight:bold;">Сегодня в {}</span>',created_time)
-        return self.created_data.strftime("%d.%m.%Y в %H:%M:%S")          
+        return self.created_data.strftime("%d.%m.%Y в %H:%M:%S")
+
+    def updated_date(self):
+        from django.utils import timezone
+        if self.updated_data.date()==timezone.now().date():
+            updated_time=self.updated_data.time().strftime("%H:%M:%S")
+            return format_html('<span style="color:blue;font-weight:bold;">Сегодня в {}</span>',updated_time)
+        return self.updated_data.strftime("%d.%m.%Y в %H:%M:%S")    
         
     class Meta:
         db_table="advertisements"
