@@ -1,8 +1,11 @@
 from django.db import models
 from django.contrib import admin
 from django.utils.html import format_html 
+from django.contrib.auth import get_user_model
 
 # Create your models here.
+
+User=get_user_model()
 
 class Advertisement(models.Model):
     title = models.CharField("заголовок",max_length=128)
@@ -11,7 +14,9 @@ class Advertisement(models.Model):
     auction=models.BooleanField("торг",help_text="Если торг уместен, то True(1), если не уместен - False(0)")
     created_data=models.DateTimeField("дата публикации",auto_now_add=True)
     updated_data=models.DateTimeField("дата обновления",auto_now=True)
-
+    user=models.ForeignKey(User, verbose_name='пользователь',on_delete=models.CASCADE,null=True)
+    image=models.ImageField("фото",upload_to='advertisements/')
+    
     def __str__(self):
         return f'Advertisement(id={self.id}, title={self.title}, price={self.price})'
     
