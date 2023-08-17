@@ -12,7 +12,46 @@
 </head>
 
 <body>
+
+<ul class="nav nav-pills sticky-top bg-white nav-fill">
+    <li class="nav-item">
+      <a class={%block a1%} "nav-link"{%endblock%} href="{% url 'index' %}">
+        <span style="font-weight: bold;">Главная</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a2%} "nav-link"{%endblock%} href="{% url 'top-sellers' %}">
+        <span style="font-weight: bold;">Топ продавцов</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a3%} "nav-link"{%endblock%} href="{% url 'advertisement-post' %}">
+        <span style="font-weight: bold;">Разместить объявление</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a4%} "nav-link"{%endblock%} href="{% url 'register' %}">
+        <span style="font-weight: bold;">Регистрация</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a5%} "nav-link"{%endblock%} href="{% url 'login' %}">
+        <span style="font-weight: bold;">Войти</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a6%}"nav-link "{%endblock%} aria-current="page" href="{% url 'profile' %}">
+        <span style="font-weight: bold;">Профиль</span>
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class={%block a7%}"nav-link"{%endblock%} href="#">
+        <span style="font-weight: bold;">Выйти</span>
+      </a>
+    </li>
+</ul>
 {% block content%}
+
 
 {% endblock %}
 
