@@ -32,7 +32,19 @@ class Advertisement(models.Model):
         if self.updated_data.date()==timezone.now().date():
             updated_time=self.updated_data.time().strftime("%H:%M:%S")
             return format_html('<span style="color:blue;font-weight:bold;">Сегодня в {}</span>',updated_time)
-        return self.updated_data.strftime("%d.%m.%Y в %H:%M:%S")    
+        return self.updated_data.strftime("%d.%m.%Y в %H:%M:%S")
+
+    @admin.display(description="изображение")
+    def picture(self):
+        from django.utils.html import format_html
+        if self.image:
+            return format_html('<img src="{url}" style="max-width: 100px; max-height: 100px;" />',url=self.image.url)
+        else:
+            return format_html('<h5>Нет картинки</h5>')
+
+        
+    created_date.short_description="дата создания"
+    updated_date.short_description="дата обновления"
         
     class Meta:
         db_table="advertisements"
