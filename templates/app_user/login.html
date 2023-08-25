@@ -7,6 +7,11 @@
 {%block a5%} "nav-link active"{%endblock%}
 
 {% block content %}
+
+{% if error %}
+  <div class="form-label bg-warning" style="margin: 10 px 0 px;"> {{ error }} </div>
+{% endif %}
+
   <div class="container">
   <div class="row">
     <div class="col-8" style="margin: 50px;">
@@ -15,20 +20,20 @@
       </div>
     </div>
   </div>
-    <form method="post">
+    <form method="post">{% csrf_token %}
       <div class="row mb-3">
         <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Username</label>
+          <label class="col-sm-4 col-form-label offset-4">Имя пользователя</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="text" class="form-control form-control-lg">
+            <input name="username" id='username' type="text" class="form-control form-control-lg">
           </div>
         </div>
       </div>
       <div class="row mb-3">
         <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Password</label>
+          <label class="col-sm-4 col-form-label offset-4">Пароль</label>
           <div class="col-sm-4 offset-4 w-25">
-            <input type="password" class="form-control form-control-lg">
+            <input name="password" id='password' type="password" class="form-control form-control-lg">
           </div>
         </div>
       </div>

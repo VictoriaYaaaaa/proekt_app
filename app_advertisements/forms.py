@@ -18,7 +18,7 @@ class AdvertisementForm(forms.ModelForm):
         if data[0]=='?':
             raise forms.ValidationError("Заголовок не может начинаться с вопросительного знака, передалайте!")
         return data
-        
+
 
 
 
