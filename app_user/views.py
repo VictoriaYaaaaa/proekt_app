@@ -3,11 +3,24 @@ from django.urls import reverse
 from django.contrib.auth import authenticate,logout,login as dj_login
 from django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
+from .forms import UserForm 
 
 # Create your views here.
 
 def register(request):
-    return render(request,'app_user/register.html')
+    redirect_url=reverse('profile')
+    if request.method=="POST":
+        form= UserForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username=form.cleaned_data.get('username')
+            password=form.cleaned_data.get('password1')
+            user=authenticate(request,username=username,password=password)
+            dj_login(request, user)
+            return redirect(redirect_url)
+    else:
+        form= UserForm()
+    return render(request,'app_user/register.html',{'form':form})
 
 def login(request):
     redirect_url=reverse('profile')

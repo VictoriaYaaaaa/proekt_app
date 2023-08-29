@@ -15,48 +15,35 @@
       </div>
     </div>
   </div>
-    <form method="post"> {% csrf_token %}
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Username</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input name="username" id='username' type="text" class="form-control form-control-lg">
-          </div>
+    <form method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+        <div class="fieldWrapper">
+            {{ form.username.errors }}
+            <label for="{{ form.username.id_for_label }}" class="col-sm-4 col-form-label offset-4">Пользователь:</label>
+            <input name="username" type="text" class="form-control form-control-lg" id='{{ form.username }}'
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Name</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input name="name" id='name' type="text" class="form-control form-control-lg">
-          </div>
+        <div class="fieldWrapper">
+            {{ form.name.errors }}
+            <label for="{{ form.name.id_for_label }}" class="col-sm-4 col-form-label offset-4">Имя:</label>
+            <input name="name" class="form-control form-control-lg" id='{{ form.name }}'
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Surname</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input name="surname" id='surname' type="text" class="form-control form-control-lg">
-          </div>
+        <div class="fieldWrapper">
+            {{ form.surname.errors }}
+            <label for="{{ form.surname.id_for_label }}" class="col-sm-4 col-form-label offset-4">Фамилия:</label>
+            <input name="surname" class="form-control form-control-lg" id='{{ form.surname }}'
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Password</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input name="password" id='password' type="password" class="form-control form-control-lg">
-          </div>
+        <div class="fieldWrapper">
+            {{ form.password1.errors }}
+            <label for="{{ form.password1.id_for_label }}" class="col-sm-4 col-form-label offset-4">Пароль:</label>
+            <input name="password1" type="password" class="form-control form-control-lg" id='{{ form.password1 }}'
+
         </div>
-      </div>
-      <div class="row mb-3">
-        <div class="col">
-          <label class="col-sm-4 col-form-label offset-4">Password confirmation</label>
-          <div class="col-sm-4 offset-4 w-25">
-            <input name="password_confirmation" id='password_confirmation' type="password" class="form-control form-control-lg">
-            <div class="form-label bg-warning" style="margin: 10px 0px;">Ошибка (если будет)</div>
-          </div>
-        </div>
-      </div>
+         <div class="fieldWrapper">
+            {{ form.password2.errors }}
+            <label for="{{ form.password2.id_for_label }}" class="col-sm-4 col-form-label offset-4">Повторите пароль:</label>
+            <input name="password2" type="password" class="form-control form-control-lg" id='{{ form.password2 }}'
+         </div>
       <div class="row mb-3 offset-sm-5">
         <div class="col">
           <button type="submit" class="btn btn-success">Принять</button>
